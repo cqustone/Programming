@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Request Meta Information{% endblock %}
+
+{% block content %}
+	<table>
+	{% for k,v in values %}
+    		<tr><td>{{ k}}</td><td>{{v}}</td></tr>
+	{% endfor %}
+	</table>
+<style>
+	h1#title{display:none;}
+</style>
+
+{% endblock %}

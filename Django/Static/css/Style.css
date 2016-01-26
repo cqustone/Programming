@@ -1,0 +1,69 @@
+﻿@charset"utf-8";
+/* css reste MyDJ static*/
+HTML,BODY,DIV,SPAN,UL,OL,DL,P,INPUT,BUTTON,LABEL{PADDING:0px;MARGIN:0px;BORDER:0PX;}
+LI{LIST-STYLE-TYPE:none;}
+EM,STRONG,TH{FONT-STYLE:normal;FONT-WEIGHT:norma;}
+H1,H2,H3,H4,H5,H6{FONT-SIZE:100%;FONT-WEIGHT:normal;}
+/*common style*/
+body{background: url(bg.png) repeat;color:#063; width:100%;}
+body{font-size:12px;font-family:"Microsoft YaHei","微软雅黑",simhei,STHeiti,"Microsoft JhengHei";}
+a{color:#063;font-size:12px;text-decoration:none;background:none;}
+a:link, a:visited {color:#033;}
+a:hover, a:active {color:#093;}
+.clear{clear:both;float:none;height:0px;}
+.border{ border:1px #063 solid;}
+.show{ display:block;} .hide{ display:none;}
+/*footer style*/
+.footer{text-align:center;background:#063; padding:12px 0;}
+.footer span{height:30px; line-height:30px;color:#FFC;}
+/*content style*/
+.head{background:#063; padding-top:18px;}
+.head .banner{ background:url(head.png) no-repeat 0 1px; width:960px;height:213px; margin:0 auto;}
+.seper{height:16px; background:#063; margin-top:3px;}
+.wrap{width:962px; margin:16px auto;}
+.left{ float:left; padding:2px; width:636px;}
+.right{ float:right; padding:2px; width:316px;}
+.left .bot{ background:url(bottom1.png) no-repeat; height:8px;}
+.left .top{ background:url(jbxx.png) no-repeat; height:29px;}
+.right .top{ background:url(jbxz.png) no-repeat 0 2px; height:28px;}
+.right .bot{ background:url(bottom2.png) no-repeat; height:8px;}
+.sec .top{ background:url(jbrxx.png) no-repeat; margin-top:6px;}
+.con{ border-left:2px #063 solid;border-right:2px #063 solid; padding-top:20px;}
+.con dl{padding-bottom:15px;height:30px;}
+.con dl.tip{height:112px;} 
+.con dl.filetip{height:50px; margin-top:-5px;} 
+.star{ color:red; padding-right:6px;height:18px;margin-top:4px;}
+.left .con{ height:460px;} .right .con{ height:210px;} .sec .con{ height:224px;}
+select{height:22px;}
+label{ float:left;line-height:22px;text-align:right;font-weight:bold; width:130px; height:22px;}
+input,select,textarea{float:left;margin-left:10px;width:300px;height:20px;border:1px solid #063;background:none;}
+textarea{width:430px; height:100px; resize:none;}
+button{float:left;cursor:pointer;margin-left:10px;background:url(upload.png) no-repeat;width:74px;height:26px;}
+input#file{height:22px; padding:1px 2px; width:345px;}
+input#code{width:80px;}
+input#codepic{height:22px;width:108px;border:none; background:url(code.png);}
+button#submit{background:url(submit.png) no-repeat;margin-left:40px;margin-top:-2px;}
+button#reset{background:url(reset.png) no-repeat;margin-left:26px;margin-top:-2px}
+button#get{background:url(hqxgxx.png) no-repeat;width:116px;height:22px;}
+.filetip span{padding-left:138px;width:550px; float:left;}
+.right .con{ padding:0px;}
+.right .con ol{padding:0 16px;line-height:18px;}
+.right .con ol.bold{ text-align:center; font-weight:bold; padding-top:10px;}
+.sec .con ul{height:20px; padding:10px 0 10px 36px;}
+.sec .con ul input{margin-left:30px; border:none;}
+.sec .con ul span{float:left; font-weight:bold; font-size:14px;padding-left:10px; line-height:18px;}
+.sec .con input,.sec .con label{width:auto;}
+.sec .con .info{ height:194px; padding:0 8px;}
+.sec .info dl{padding-bottom:12px;height:26px;}
+.sec .info input{ width:228px;}
+.sec .info input#name{ width:90px;}
+.sec .info label{ width:50px;}
+.sec .info select{ width:110px; margin-left:10px;}
+.sec .info select#dep{ width:90px;}
+.sec .info input#pwd{ width:65px;}
+.sec .info .radio{ width:auto; line-height:20px; border:none;}
+.sec .info span{ float:left; line-height:18px; padding-left:5px;}
+.nav{line-height:24px; padding-bottom:10px; text-align:center;}
+p{ text-indent:2em;padding-bottom:5px; line-height:26px;}
+.title{font-size:18px;font-family:"Microsoft YaHei","微软雅黑",simhei,STHeiti,"Microsoft JhengHei"; padding:10px 10px 2px;margin-bottom:10px; border-bottom:3px solid #063;}
+ul.low li{width:48%; padding-left:8px; float:left; line-height:24px;}

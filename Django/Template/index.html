@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn">
+    <head>        
+        <title>互联网不良有害信息举报平台</title>
+        <meta name="author" content="cqustone(201507)"/>
+        <meta name="keywords" content="{field:keywords}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		{% load staticfiles %}
+        <link href="{% static "css/Style.css" %}" rel="stylesheet" type="text/css" />        
+    </head>
+    <body>     
+        <div class="head"><div class="banner"></div></div>
+        <div class="seper"></div>
+        <div class="wrap">
+            <div class="nav">
+				{% if username %}
+					<span>欢迎 {{username}}<a href="" style="font-weight:bold;color:red;"> 进入举报系统</a></span>
+				{% else %}
+					{{aLoginForm.as_table}}
+				{% endif %}
+				<span>举报前，请认真阅读说明。举报过程中如有疑问，请查阅相关法律法规，谢谢合作！</span>
+			</div>
+			<div class="title">系统说明</div>
+			<p class="tittip">
+				根据工作部署，今年6月至11月，中央网信办和总政治部联合开展一次整治网上有害信息专项行动。
+			</p>
+			<div class="title">法律法规</div>
+			<ul class="low">
+				<li><a href="">全国人民代表大会常务委员会关于加强网络信息保护的决定</a></li>
+				<li><a href="">全国人民代表大会常务委员会关于维护互联网安全的决定</a></li>
+				<li><a href="">互联网上网服务营业场所管理条例</a></li>
+				<li><a href="">计算机信息网络国际联网安全保护管理办法</a></li>
+				<li><a href="">互联网新闻信息服务单位约谈工作规定</a></li>
+				<li><a href="">公安部、网信办、工信部等6部门联合发布《互联网危险物品信息发布管理规定》</a></li>
+				<li><a href="">计算机信息网络国际联网安全保护管理办法</a></li>
+				<li><a href="">互联网新闻信息服务单位约谈工作规定</a></li>
+				<div class="clear"></div>
+			</ul>			
+        </div>
+        <!--footer start-->
+        <div class="footer">
+			<span>互联网办公室 &nbsp;&nbsp;&nbsp;&nbsp; 版权所有</span><br />
+			<span>Copyright © 2015 &nbsp;&nbsp; 联系人：管理员 &nbsp;&nbsp; 联系电话：</span>  	
+        </div>           
+    </body>
+</html>

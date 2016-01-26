@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Publishers</h2>
+    ####两种方案均可行#####<br />
+    其中publisherlist是在urls.py中定义的context_object_name='publisherlist',<br />
+    其中object_list是系统变量，因为传递过来的本来就是对象的列表，类型相符<br />
+    <ul>
+        {% for publisher in publisherlist %}
+            <li>{{ publisher.name }}</li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for publisher in object_list %}
+            <li>{{ publisher.name }}</li>
+        {% endfor %}
+    </ul>
+	<style>
+		h1#title{display:none;}
+	</style>
+{% endblock %}

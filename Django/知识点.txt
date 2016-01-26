@@ -1,0 +1,128 @@
+Django静态文件解析
+
+	教程：http://lanceverw.iteye.com/blog/1798037
+		  https://docs.djangoproject.com/en/1.4/howto/static-files/
+	settings.py 增加：
+		STATICFILES_DIRS = ['C:/AppServ/WWW/MyDJ/static',] 
+		      …/static可以修改，必须绝对路径，而且要用/不能\？
+		推荐方法：STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+	urls.py 增加：
+		from django.contrib.staticfiles.urls import staticfiles_urlpatterns 必须放在第一行？
+		urlpatterns += staticfiles_urlpatterns()    必须放在最后一行 ！
+	Template 调用：
+		{% load staticfiles %}
+	        <link href="{% static "css/Style.css" %}" rel="stylesheet" type="text/css" />
+								绝对不能"/css/Style.css"！！！
+
+
+Django运行phantomjs(capture.js)截屏
+
+	phantomjs.exe在命令行cmd下可以直接执行js文件截图，通过此灵感，在python的Django脚本中
+ 	通过执行shell命令运行phantomjs.exe 执行js文件，完成截图目的	
+	安装phantomjs：
+	      phantomjs.exe 可执行文件，无需安装，将此文件拷贝到 网站的工程 目录下
+	Django文件：views.py
+	import subprocess
+	def capture_phantomjs(request):  
+	    errors = []    
+	    if 'url' in request.GET:
+	        url = request.GET['url']
+	        if not url:
+	            errors.append('Enter a link.')
+	        else:
+	            file = datetime.datetime.now().strftime("%Y%m%d-%H%M%S");
+	            name = os.path.join(BASE_DIR, 'Capture\\%s.png' %file)
+	            command = "phantomjs capture.js %s %s" %(url,name)
+	            subprocess.Popen(command, shell=True)
+	            return HttpResponseRedirect('/contact/thanks/')
+		    return render_to_response('capture.html',{'errors': errors})
+	JS文件：Cpature.js
+	var system = require('system');
+	function capture(array){
+		var page = require('webpage').create();
+		page.open(array[0], function(success){
+		    if(success==='success'){        
+		        setTimeout(page.render(array[1]),5000);
+		        // console.log('success');
+		        phantom.exit();
+		    }else{
+		        // console.log('error');
+		        phantom.exit();
+		    }
+		});
+	}
+	if ( system.args.length < 2 ) {
+	    console.log("Enter a valid link and a file name !!!");
+	    phantom.exit(1);
+	} else {
+	    capture(system.args.slice(1), function() {
+	        phantom.exit();
+	    });
+	}
+	模板文件：cpature.html
+	<html>
+	<head>
+	    <title>capture</title>
+	</head>
+	<body>
+		{% if errors %}
+	        <ul>
+	            {% for error in errors %}
+	            <li>{{ error }}</li>
+	            {% endfor %}
+	        </ul>
+	    {% endif %}
+	    <form action="" method="get">
+	        <input type="link" name="url">
+	        <input type="submit" value="Capture">
+	    </form>
+	</body>
+	</html>
+
+
+# 网页截屏函数 Selenium Webdriver对象browser截屏
+# from selenium import webdriver
+def capture(url, save_fn="captures.png"):
+    browser = webdriver.Firefox() # Get local session of firefox
+    browser.set_window_size(1200, 800)
+    browser.get(url) # Load page
+    browser.execute_script("""
+        (function () {
+          var y = 0;
+          var step = 200;
+          window.scroll(0, 0); 
+          function f() {
+            if (y < document.body.scrollHeight) {
+              y += step;
+              window.scroll(0, y);
+              setTimeout(f, 100);
+            } else {
+              window.scroll(0, 0);
+              document.title += "scroll-done";
+            }
+          } 
+          setTimeout(f, 2000);
+        })();
+        """) 
+
+    for i in range(30):
+        if "scroll-done" in browser.title:
+            break
+
+    time.sleep(5) 
+    browser.save_screenshot(save_fn)
+    browser.close() 
+
+if __name__ == "__main__":
+    capture("http://www.baidu.com")
+
+def capture_selenium(request):  ##  selenium —— django packet 通过pip或者下载安装
+    errors = []
+    if 'url' in request.GET:
+        url = request.GET['url']
+        if not url:
+            errors.append('Enter a link.')
+        else:
+            capture(url)
+            return HttpResponseRedirect('/thanks/')
+    return render_to_response('capture.html',{'errors': errors})
