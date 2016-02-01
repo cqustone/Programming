@@ -28,6 +28,6 @@ Django Study
 	(urls.py)urlpatterns += staticfiles_urlpatterns() 必须放在最后一行   
 	(Template){% load staticfiles %} <link href="{% static "css/Style.css" %}" />  
 
-####Django截屏  
+####Django截屏操作  
 	Phantomjs执行capture.js截屏  
 	Selenium Webdriver对象browser截屏  
