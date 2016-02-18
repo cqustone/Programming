@@ -1,7 +1,13 @@
 Programming
 ===========
 编程开发学习研究、学习笔记等  
-Directory.bat：命令行目录选择批处理  
+
+
+BAT批处理
+------------
+	WIFI.bat：WIFI设置程序  
+	IPDNS.bat：IP-DNS选择程序  
+	Directory.bat：目录选择程序  
 
 
 Python Study
